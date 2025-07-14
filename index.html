@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WebAR GeoLocation UTDI</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; gpsMinAccuracy: 100; debugUIEnabled: false;"
+    >
+      <!-- Kamera + GPS aktif -->
+      <a-camera gps-camera rotation-reader></a-camera>
+
+      <!-- Model 3D hanya muncul jika dekat UTDI -->
+      <a-entity 
+        gps-entity-place="latitude: -7.792729; longitude: 110.407447;"
+        gltf-model="46_o.glb"
+        scale="2 2 2"
+        rotation="0 180 0"
+        look-at="[gps-camera]">
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
